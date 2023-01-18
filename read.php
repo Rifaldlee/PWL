@@ -87,7 +87,7 @@
                     echo "<td>" . $row['product_type'] . "</td>";
                     echo "<td>" . $row['price'] . "</td>";
                     echo "<td>" . $row['release_date'] . "</td>";
-                    echo "<td><a href='update.php?id=". $row['id'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
+                    echo "<td><a href='edit.php?id=". $row['id'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
                     echo "<td><button type='button' class='btn btn-danger deleteButton pad m-1'><span class='material-icons align-middle'>delete</span></button></td>";
                     echo "</tr>";
                     $no++;
