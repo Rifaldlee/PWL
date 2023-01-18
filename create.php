@@ -21,7 +21,7 @@
                     $release_date = $_POST['release_date'];
                     
                     $script = "INSERT INTO products SET 
-                    name='$name',merk='$merk',product_type='$product_type',price='$price',release_date='$release_date',";
+                    name='$name',merk='$merk',product_type='$product_type',price='$price',release_date='$release_date'";
                     $query = mysqli_query($conn,$script);
                     if($query){
                         header("location:read.php");
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label>Jenis Product</label>
-                    <select name="product_type" class="form-control">
+                    <select class="form-control" name="product_type">
                         <option>Pilih jenis</option>
                         <option value="laptop">Processor</option>
                         <option value="handphone">Memory</option>
@@ -57,11 +57,11 @@
                 </div>
                 <div class="form-group mt-3">
                     <label>Harga</label>
-                    <input type="number" class="form-control" name="price ">
+                    <input type="int" class="form-control" name="price">
                 </div>
                 <div class="form-group mt-3">
                     <label>Tanggal Release</label>
-                    <input type="date" class="form-control" name="tgl_transaksi">
+                    <input type="date" class="form-control" name="release_date">
                 </div>
                 <div class="mt-5">
                     <input type="submit" class="btn btn-primary" name="submit" value="Upload"> 

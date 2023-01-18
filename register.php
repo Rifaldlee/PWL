@@ -22,7 +22,7 @@
 
         $error = '';
         $validate = '';
-        if( isset($_SESSION['user']) ) header('Location: index.php');
+        if( isset($_SESSION['user']) ) header('Location: login.php');
         // mengecek apakah data username yang diinputkan user kosong atau tidak
         if( isset($_POST['submit']) ){            
             // mengilangkan backshlases
@@ -49,10 +49,10 @@
                         // insert data ke database
                         $query = "INSERT INTO users (username, name, email, password) VALUES ('$username', '$name', '$email', '$pass')";
                         $result = mysqli_query($conn, $query);
-                        // jika insert data berhasil maka akan redirect ke halaman index.php serta menyimpan data username ke session
+                        // jika insert data berhasil maka akan redirect ke halaman login.php serta menyimpan data username ke session
                         if ($result){
                             $_SESSSION['username'] = $username;
-                            header('Location: index.php');
+                            header('Location: login.php');
 
                         // jika gagal maka akan menampilkan pesan error
                         }else{
