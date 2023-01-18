@@ -32,10 +32,10 @@
                                     <?php
                                     $kolom = (isset($_GET['Kolom'])) ? $_GET['Kolom'] : "";
                                     ?>
-                                    <option value="nama" <?php if ($kolom == "nama") {
+                                    <option value="name" <?php if ($kolom == "name") {
                                                                 echo "selected";
                                                             } ?>>Nama</option>
-                                    <option value="id_pembeli" <?php if ($kolom == "Id_customer") {
+                                    <option value="id" <?php if ($kolom == "Id") {
                                                                 echo "selected";
                                                             } ?>>Id Pembeli</option>
                                 </select>
@@ -57,7 +57,8 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
-                    <th>price</th>
+                    <th>Products Type</th>
+                    <th>Price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
                     <th>Hapus</th>
@@ -99,6 +100,40 @@
                 ?>
             </tbody>
         </table>
+
+    <!-- edit function -->
+    <!-- <script>
+        $(document).ready(function() {
+            $('.editButton').on('click', function() {
+                $('#editModal').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#edit_id').val(data[0]);
+                // gak dipake, karena cuma increment number
+                // $('#no').val(data[1]);
+                $('#edit_nama').val(data[2]);
+                $('#edit_Pmasuk').val(data[3]);
+                $('#jenis_barang').val(data[4]);
+                // jenis kelamin checked
+                if (data[4] == "pisang") {
+                    $("#pisang").prop("checked", true);
+                } else {
+                    $("#mangga").prop("checked", true);
+                }
+
+                $('#edit_harga').val(data[5]);
+                $('#edit_tgl_masuk').val(data[6]);
+            });
+        });
+    </script> -->
+
+
         <div align="left">
             <ul class="pagination">
                 <?php
