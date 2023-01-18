@@ -1,4 +1,11 @@
+<?php
+    session_start();
 
+    if(!isset($_SESSION['username'])){
+        $_SESSION['msg']='anda harus login untuk mengakses halaman ini';
+        header('Location: login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,11 +57,10 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
-                    <th>Jenis</th>
-                    <th>Harga</th>
+                    <th>price</th>
                     <th>Tanggal Release</th>
-                    <th>Edit Barang</th>
-                    <th>Hapus Barang</th>
+                    <th>Edit</th>
+                    <th>Hapus</th>
                 </tr>
             </thead>
             <tbody  >
