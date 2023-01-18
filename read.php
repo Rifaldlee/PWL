@@ -57,8 +57,7 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
-                    <th>Products Type</th>
-                    <th>Price</th>
+                    <th>price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
                     <th>Hapus</th>

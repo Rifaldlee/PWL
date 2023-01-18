@@ -21,7 +21,6 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
     }
 
     $input_name = trim($_POST["name"]);
-    var_dump($input_name);
     if(empty($input_name)){
         $name_err = "Silahkan input nama";
     } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
@@ -39,14 +38,14 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
 
     $input_product_type = trim($_POST["product_type"]);
     if(empty($input_product_type)){
-        $product_type_err = "Silahkan input No. Handphone";
+        $product_type_err = "Silahkan input Tipe Produk";
     } else{
         $product_type = $input_product_type;
     }
 
     $input_price = trim($_POST["price"]);
     if(empty($input_price)){
-        $price_err = "Silahkan input Tanggal price";
+        $price_err = "Silahkan input price";
     } else{
         $price = $input_price;
     }
