@@ -21,10 +21,9 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
     }
 
     $input_name = trim($_POST["name"]);
-    var_dump($input_name);
     if(empty($input_name)){
         $name_err = "Silahkan input nama";
-    } elseif(!filter_var($input_nama, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
+    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
         $name_err = "Tolong input nama yang benar";
     } else{
         $name = $input_name;
@@ -37,16 +36,16 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
         $merk = $input_merk;
     }
 
-    $input_product_type = trim($_POST["Product Type"]);
+    $input_product_type = trim($_POST["product_type"]);
     if(empty($input_product_type)){
-        $product_type_err = "Silahkan input No. Handphone";
+        $product_type_err = "Silahkan input Tipe Produk";
     } else{
         $product_type = $input_product_type;
     }
 
-    $input_price = trim($_POST["Price"]);
+    $input_price = trim($_POST["price"]);
     if(empty($input_price)){
-        $price_err = "Silahkan input Tanggal price";
+        $price_err = "Silahkan input price";
     } else{
         $price = $input_price;
     }
@@ -79,7 +78,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
             //attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 //records updated successfully. redirect to landing page
-                header("location: index.php");
+                header("location: read.php");
                 exit();
             } else{
                 echo "Something went wrong. Please try again later.";
@@ -119,6 +118,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                 $id = $row["id"];
                 $name = $row["name"];
                 $merk = $row["merk"];
+                $product_type = $row["product_type"];
                 $price = $row ["price"];
                 $release_date = $row ["release_date"];
                 
@@ -176,32 +176,33 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Nama</label>
-                            <input type="text"name="nama" class="form-control" value="<?php echo $name; ?>">                            
+                            <input type="text"name="name" class="form-control" value="<?php echo $name; ?>">                            
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($merk_err)) ? 'has-error' : ''; ?>">
                             <label>Merk</label>
-                            <input type="text" name="Merk" class="form-control" value="<?php echo $merk; ?>">
+                            <input type="text" name="merk" class="form-control" value="<?php echo $merk; ?>">
                             <span class="help-block"><?php echo $merk_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($product_type_err)) ? 'has-error' : ''; ?>">
-                            <label>Price</label>
-                            <input type="text" name="Product_type" class="form-control" value="<?php echo $product_type; ?>">
+                            <label>Product Type</label>
+                            <input type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
                             <span class="help-block"><?php echo $product_type_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($release_date_err)) ? 'has-error' : ''; ?>">
-                            <label>Product Type</label>
-                            <input type="text" name="Jenis_Barang" class="form-control" value="<?php echo $release_date; ?>">                         
-                            <span class="help-block"><?php echo $release_date_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
-                            <label>Tanggal rilis</label>
-                            <input type="date" name="Tgl_Transaksi" class="form-control" value="<?php echo $price; ?>">
+                            <label>Price</label>
+                            <input type="int" name="price" class="form-control" value="<?php echo $price; ?>">
                             <span class="help-block"><?php echo $price_err;?></span>
                         </div>
+                        <div class="form-group <?php echo (!empty($release_date_err)) ? 'has-error' : ''; ?>">
+                            <label>Tanggal Rilis</label>
+                            <input type="date" name="release_date" class="form-control" value="<?php echo $release_date; ?>">                         
+                            <span class="help-block"><?php echo $release_date_err;?></span>
+                        </div>
+                        
                         
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <a href="read.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>
