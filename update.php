@@ -3,8 +3,8 @@
 require_once "config.php";
 
 //define variables and initialize with empty values
-$id_pembeli = $nama = $alamat = $HP = $Tgl_Transaksi = $Jenis_Barang = $Nama_Barang = $Jumlah = $Harga = "";
-$id_pembeli_err  = $nama_err = $alamat_err = $HP_err = $Tgl_Transaksi_err = $Jenis_Barang_err = $Nama_Barang_err = $Jumlah_err = $Harga_err = "";
+$id = $name = $merk = $product_type = $price = $release_date ="";
+$id_err  = $name_err = $merk_err = $product_type_err = $price_err = $release_date_err = "";
 
 //processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST ["id"])){
@@ -13,93 +13,68 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
 
 
     //validate nama
-    $input_id_pembeli = trim($_POST["id_pembeli"]);
-    if(empty($input_id_pembeli)){
-        $id_pembeli_err = "Silahkan input ID Pembeli";
+    $input_id = trim($_POST["id"]);
+    if(empty($input_id)){
+        $id_err = "Silahkan input ID Pembeli";
     } else{
-        $id_pembeli = $input_id_pembeli;
+        $id = $input_id;
     }
 
-    $input_nama = trim($_POST["nama"]);
-    var_dump($input_nama);
-    if(empty($input_nama)){
-        $nama_err = "Silahkan input nama";
+    $input_name = trim($_POST["name"]);
+    var_dump($input_name);
+    if(empty($input_name)){
+        $name_err = "Silahkan input nama";
     } elseif(!filter_var($input_nama, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
-        $nama_err = "Tolong input nama yang benar";
+        $name_err = "Tolong input nama yang benar";
     } else{
-        $nama = $input_nama;
+        $name = $input_name;
     }
 
-    $input_alamat = trim($_POST["alamat"]);
-    if(empty($input_alamat)){
-        $alamat_err = "Silahkan input Alamat";
+    $input_merk = trim($_POST["merk"]);
+    if(empty($input_merk)){
+        $merk_err = "Silahkan input merk";
     } else{
-        $alamat = $input_alamat;
+        $merk = $input_merk;
     }
 
-    $input_HP = trim($_POST["HP"]);
-    if(empty($input_HP)){
-        $HP_err = "Silahkan input No. Handphone";
+    $input_product_type = trim($_POST["Product Type"]);
+    if(empty($input_product_type)){
+        $product_type_err = "Silahkan input No. Handphone";
     } else{
-        $HP = $input_HP;
+        $product_type = $input_product_type;
     }
 
-    $input_Tgl_Transaksi = trim($_POST["Tgl_Transaksi"]);
-    if(empty($input_Tgl_Transaksi)){
-        $Tgl_Transaksi_err = "Silahkan input Tanggal Transaksi";
+    $input_price = trim($_POST["Price"]);
+    if(empty($input_price)){
+        $price_err = "Silahkan input Tanggal price";
     } else{
-        $Tgl_Transaksi = $input_Tgl_Transaksi;
+        $price = $input_price;
     }
 
-    $input_Jenis_Barang = trim($_POST["Jenis_Barang"]);
-    if(empty($input_Jenis_Barang)){
-        $Jenis_Barang_err = "Silahkan input Jenis Barang";
+    $input_release_date = trim($_POST["Release date"]);
+    if(empty($input_release_date)){
+        $release_date_err = "Silahkan input Release date";
     } else{
-        $Jenis_Barang = $input_Jenis_Barang;
+        $release_date = $input_release_date;
     }
-
-    $input_Nama_Barang = trim($_POST["Nama_Barang"]);
-    if(empty($input_Nama_Barang)){
-        $Nama_Barang_err = "Silahkan input Nama Barang";
-    } else{
-        $Nama_Barang = $input_Nama_Barang;
-    }
-
-    // Validate salary
-    $input_Jumlah = trim($_POST["Jumlah"]);
-    if(empty($input_Jumlah)){
-        $Jumlah_err = "Silahkan input Jumlah";
-    } elseif(!ctype_digit($input_Jumlah)){
-        $Jumlah_err = "Tolong masukkan angka";
-    } else{
-        $Jumlah = $input_Jumlah;
-    }
-
-    $input_Harga = trim($_POST["Harga"]);
-    if(empty($input_Harga)){
-        $Harga_err = "Silahkan input Harga";
-    } elseif(!ctype_digit($input_Harga)){
-        $Harga_err = "Tolong masukkan angka";
-    } else{
-        $Harga = $input_Harga;
-    }    
+   
 
     //check input errors before inserting in database
-    if(empty($id_pembeli_err) && empty($nama_err) && empty($alamat_err) && empty($HP_err) && empty($Tgl_Transaksi_err) && empty($Jenis_Barang_err) && empty($Nama_Barang_err) && empty($Jumlah_err) && empty($Harga_err)){
+    if(empty($id_err) && empty($name_err) && empty($merk_err) && empty($product_type_err)&& empty($price_err) && empty($release_date_err)){
         // Prepare an insert statement
-        $sql = "UPDATE icehardware SET id_pembeli=?, nama=?, alamat=?, HP=?, Tgl_Transaksi=?, Jenis_Barang=?, Nama_Barang=?, Jumlah=?, Harga=?)";
+        $sql = "UPDATE products SET id=?, name=?, merk=?, product_type=?, price=?, release_date=?)";
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "issssssii", $param_id_pembeli, $param_nama, $param_alamat, $param_HP, $param_Tgl_Transaksi, $param_Jenis_Barang, $param_Nama_Barang, $param_Jumlah, $param_Harga);
+            mysqli_stmt_bind_param($stmt, "issssssii", $param_id, $param_name, $param_merk, $param_product_type, $param_price, $param_release_date,);
 
            // Set paramaters
-           $param_id_pembeli = $id_pembeli;
-           $param_nama = $nama;             
-           $param_alamat = $alamat; 
-           $param_HP = $HP; 
-           $param_Tgl_Transaksi = $Tgl_Transaksi; 
-           $param_Jenis_Barang = $Jenis_Barang; 
+           $param_id = $id;
+           $param_name = $name;             
+           $param_merk = $merk; 
+           $param_product_type = $product_type; 
+           $param_price = $price; 
+           $param_release_date = $release_date; 
            $param_Nama_Barang = $Nama_Barang; 
            $param_Jumlah = $Jumlah; 
            $param_Harga = $Harga;
@@ -126,7 +101,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
         $id =  trim($_GET["id"]);
 
         //prepare a select statement
-        $sql = "SELECT * FROM icehardware WHERE id = ?";
+        $sql = "SELECT * FROM icehardware WHERE id_pembeli = ?";
         if($stmt = mysqli_prepare($conn, $sql)){
             //bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -146,11 +121,13 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                 $id_pembeli = $row["id_pembeli"];
                 $nama = $row["nama"];
                 $alamat = $row["alamat"];
-                $HP = $HP["HP"];    
-                
+                $HP = $row ["HP"];
+                $Tgl_Transaksi = $row ["tgl_transaksi"];
+                $Jenis_Barang = $row["jenis_barang"];
+                $Nama_Barang = $row["nama_barang"];
+                $Jumlah = $row["jumlah"];
+                $Harga = $row["harga"];
             
-                
-                
                 } else{
                 // URL doesn't contain valid id. Redirect to error page
                 header("location: error.php");

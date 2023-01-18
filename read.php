@@ -54,15 +54,12 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th>
-                    <th>Nama </th>
-                    <th>Alamat</th>
-                    <th>Hp</th>
-                    <th>Tanggal transaksi</th>
-                    <th>Jenis Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Jumlah</th>
-                    <th>harga</th>
+                    <th>ID</th>
+                    <th>Name </th>
+                    <th>Merk</th>
+                    <th>product Type</th>
+                    <th>Price</th>
+                    <th>release Date </th>
                 </tr>
             </thead>
             <tbody  >
