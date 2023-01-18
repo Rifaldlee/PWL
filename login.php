@@ -7,7 +7,7 @@
     $error = '';
     $validate = '';
 
-    // mengecek apakah session username tersedia atau tidak jika tersedia maka akan redirect ke halaman read
+    // mengecek apakah session username tersedia atau tidak jika tersedia maka akan redirect ke halaman index
     if(isset($_SESSION['username'])) header('Location: read.php');
 
     // mengecek apakah form disubmit atau tidak
