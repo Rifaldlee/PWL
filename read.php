@@ -35,9 +35,9 @@
                                     <option value="name" <?php if ($kolom == "name") {
                                                                 echo "selected";
                                                             } ?>>Nama</option>
-                                    <option value="id" <?php if ($kolom == "Id") {
+                                    <option value="id" <?php if ($kolom == "id") {
                                                                 echo "selected";
-                                                            } ?>>Id Pembeli</option>
+                                                            } ?>>Id Barang</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -57,13 +57,14 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
+                    <th>product_type</th>
                     <th>price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
                     <th>Hapus</th>
                 </tr>
             </thead>
-            <tbody  >
+            <tbody>
                 <?php
                 include "config.php";
                 $page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
@@ -87,7 +88,7 @@
                     echo "<td>" . $row['price'] . "</td>";
                     echo "<td>" . $row['release_date'] . "</td>";
                     echo "<td><a href='update.php?id=". $row['id'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
-                    echo "<td><a href='delete.php?id=". $row['id'] ."' class='btn btn-danger pull-right'>Hapus</a></td>";
+                    echo "<td><button type='button' class='btn btn-danger deleteButton pad m-1'><span class='material-icons align-middle'>delete</span></button></td>";
                     echo "</tr>";
                     $no++;
                 }
@@ -99,12 +100,36 @@
                 ?>
             </tbody>
         </table>
+        <div class='modal fade' style="top:58px !important;" id='deleteModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLabel'>Konfirmasi</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
 
-    <!-- edit function -->
-    <!-- <script>
+
+                    <form action='hapus.php' method='POST'>
+
+                        <div class='modal-body text-start'>
+                            <input type='hidden' name='delete_id' id='delete_id'>
+                            <p>Yakin ingin menghapus data ini?</p>
+                        </div>
+
+                        <div class='modal-footer'>
+                            <button type='submit' name='deletedata' class='btn btn-primary'>Hapus</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <script>
         $(document).ready(function() {
-            $('.editButton').on('click', function() {
-                $('#editModal').modal('show');
+            $('.deleteButton').on('click', function() {
+                $('#deleteModal').modal('show');
 
                 $tr = $(this).closest('tr');
 
@@ -113,26 +138,15 @@
                 }).get();
 
                 console.log(data);
-                $('#edit_id').val(data[0]);
-                // gak dipake, karena cuma increment number
-                // $('#no').val(data[1]);
-                $('#edit_nama').val(data[2]);
-                $('#edit_Pmasuk').val(data[3]);
-                $('#jenis_barang').val(data[4]);
-                // jenis kelamin checked
-                if (data[4] == "pisang") {
-                    $("#pisang").prop("checked", true);
-                } else {
-                    $("#mangga").prop("checked", true);
-                }
-
-                $('#edit_harga').val(data[5]);
-                $('#edit_tgl_masuk').val(data[6]);
+                $('#delete_id').val(data[0]);
             });
         });
-    </script> -->
-
-
+    </script>
+     <script>
+        function clicking() {
+            window.location.href = './index.php';
+        }
+    </script>
         <div align="left">
             <ul class="pagination">
                 <?php

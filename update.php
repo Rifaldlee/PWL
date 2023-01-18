@@ -61,11 +61,11 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
     //check input errors before inserting in database
     if(empty($id_err) && empty($name_err) && empty($merk_err) && empty($product_type_err)&& empty($price_err) && empty($release_date_err)){
         // Prepare an insert statement
-        $sql = "UPDATE products SET id=?, name=?, merk=?, product_type=?, price=?, release_date=?)";
+        $sql = "UPDATE products SET name=?, merk=?, product_type=?, price=?, release_date=? WHERE id=? ";
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "issssssii", $param_id, $param_name, $param_merk, $param_product_type, $param_price, $param_release_date,);
+            mysqli_stmt_bind_param($stmt, "iiiiii",  $param_name, $param_merk, $param_product_type, $param_price, $param_release_date, $param_id,);
 
            // Set paramaters
            $param_id = $id;
