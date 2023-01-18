@@ -57,13 +57,14 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
+                    <th>product_type</th>
                     <th>price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
                     <th>Hapus</th>
                 </tr>
             </thead>
-            <tbody  >
+            <tbody>
                 <?php
                 include "config.php";
                 $page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
