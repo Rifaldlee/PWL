@@ -57,8 +57,7 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
-                    <th>Jenis</th>
-                    <th>Harga</th>
+                    <th>price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
                     <th>Hapus</th>

@@ -3,8 +3,8 @@
 require_once "config.php";
 
 //define variables and initialize with empty values
-$id_pembeli = $nama = $alamat = $HP = $Tgl_Transaksi = $Jenis_Barang = $Nama_Barang = $Jumlah = $Harga = "";
-$id_pembeli_err  = $nama_err = $alamat_err = $HP_err = $Tgl_Transaksi_err = $Jenis_Barang_err = $Nama_Barang_err = $Jumlah_err = $Harga_err = "";
+$id = $name = $merk = $product_type = $price = $release_date ="";
+$id_err  = $name_err = $merk_err = $product_type_err = $price_err = $release_date_err = "";
 
 //processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST ["id"])){
@@ -13,96 +13,69 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
 
 
     //validate nama
-    $input_id_pembeli = trim($_POST["id_pembeli"]);
-    if(empty($input_id_pembeli)){
-        $id_pembeli_err = "Silahkan input ID Pembeli";
+    $input_id = trim($_POST["id"]);
+    if(empty($input_id)){
+        $id_err = "Silahkan input ID Pembeli";
     } else{
-        $id_pembeli = $input_id_pembeli;
+        $id = $input_id;
     }
 
-    $input_nama = trim($_POST["nama"]);
-    var_dump($input_nama);
-    if(empty($input_nama)){
-        $nama_err = "Silahkan input nama";
+    $input_name = trim($_POST["name"]);
+    var_dump($input_name);
+    if(empty($input_name)){
+        $name_err = "Silahkan input nama";
     } elseif(!filter_var($input_nama, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
-        $nama_err = "Tolong input nama yang benar";
+        $name_err = "Tolong input nama yang benar";
     } else{
-        $nama = $input_nama;
+        $name = $input_name;
     }
 
-    $input_alamat = trim($_POST["alamat"]);
-    if(empty($input_alamat)){
-        $alamat_err = "Silahkan input Alamat";
+    $input_merk = trim($_POST["merk"]);
+    if(empty($input_merk)){
+        $merk_err = "Silahkan input merk";
     } else{
-        $alamat = $input_alamat;
+        $merk = $input_merk;
     }
 
-    $input_HP = trim($_POST["HP"]);
-    if(empty($input_HP)){
-        $HP_err = "Silahkan input No. Handphone";
+    $input_product_type = trim($_POST["Product Type"]);
+    if(empty($input_product_type)){
+        $product_type_err = "Silahkan input No. Handphone";
     } else{
-        $HP = $input_HP;
+        $product_type = $input_product_type;
     }
 
-    $input_Tgl_Transaksi = trim($_POST["Tgl_Transaksi"]);
-    if(empty($input_Tgl_Transaksi)){
-        $Tgl_Transaksi_err = "Silahkan input Tanggal Transaksi";
+    $input_price = trim($_POST["Price"]);
+    if(empty($input_price)){
+        $price_err = "Silahkan input Tanggal price";
     } else{
-        $Tgl_Transaksi = $input_Tgl_Transaksi;
+        $price = $input_price;
     }
 
-    $input_Jenis_Barang = trim($_POST["Jenis_Barang"]);
-    if(empty($input_Jenis_Barang)){
-        $Jenis_Barang_err = "Silahkan input Jenis Barang";
+    $input_release_date = trim($_POST["release_date"]);
+    if(empty($input_release_date)){
+        $release_date_err = "Silahkan input Release date";
     } else{
-        $Jenis_Barang = $input_Jenis_Barang;
+        $release_date = $input_release_date;
     }
-
-    $input_Nama_Barang = trim($_POST["Nama_Barang"]);
-    if(empty($input_Nama_Barang)){
-        $Nama_Barang_err = "Silahkan input Nama Barang";
-    } else{
-        $Nama_Barang = $input_Nama_Barang;
-    }
-
-    // Validate salary
-    $input_Jumlah = trim($_POST["Jumlah"]);
-    if(empty($input_Jumlah)){
-        $Jumlah_err = "Silahkan input Jumlah";
-    } elseif(!ctype_digit($input_Jumlah)){
-        $Jumlah_err = "Tolong masukkan angka";
-    } else{
-        $Jumlah = $input_Jumlah;
-    }
-
-    $input_Harga = trim($_POST["Harga"]);
-    if(empty($input_Harga)){
-        $Harga_err = "Silahkan input Harga";
-    } elseif(!ctype_digit($input_Harga)){
-        $Harga_err = "Tolong masukkan angka";
-    } else{
-        $Harga = $input_Harga;
-    }    
+   
 
     //check input errors before inserting in database
-    if(empty($id_pembeli_err) && empty($nama_err) && empty($alamat_err) && empty($HP_err) && empty($Tgl_Transaksi_err) && empty($Jenis_Barang_err) && empty($Nama_Barang_err) && empty($Jumlah_err) && empty($Harga_err)){
+    if(empty($id_err) && empty($name_err) && empty($merk_err) && empty($product_type_err)&& empty($price_err) && empty($release_date_err)){
         // Prepare an insert statement
-        $sql = "UPDATE icehardware SET id_pembeli=?, nama=?, alamat=?, HP=?, Tgl_Transaksi=?, Jenis_Barang=?, Nama_Barang=?, Jumlah=?, Harga=?)";
+        $sql = "UPDATE products SET id=?, name=?, merk=?, product_type=?, price=?, release_date=?)";
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "issssssii", $param_id_pembeli, $param_nama, $param_alamat, $param_HP, $param_Tgl_Transaksi, $param_Jenis_Barang, $param_Nama_Barang, $param_Jumlah, $param_Harga);
+            mysqli_stmt_bind_param($stmt, "issssssii", $param_id, $param_name, $param_merk, $param_product_type, $param_price, $param_release_date,);
 
            // Set paramaters
-           $param_id_pembeli = $id_pembeli;
-           $param_nama = $nama;             
-           $param_alamat = $alamat; 
-           $param_HP = $HP; 
-           $param_Tgl_Transaksi = $Tgl_Transaksi; 
-           $param_Jenis_Barang = $Jenis_Barang; 
-           $param_Nama_Barang = $Nama_Barang; 
-           $param_Jumlah = $Jumlah; 
-           $param_Harga = $Harga;
+           $param_id = $id;
+           $param_name = $name;             
+           $param_merk = $merk; 
+           $param_product_type = $product_type; 
+           $param_price = $price; 
+           $param_release_date = $release_date; 
+           
             //attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 //records updated successfully. redirect to landing page
@@ -126,7 +99,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
         $id =  trim($_GET["id"]);
 
         //prepare a select statement
-        $sql = "SELECT * FROM icehardware WHERE id = ?";
+        $sql = "SELECT * FROM products WHERE id = ?";
         if($stmt = mysqli_prepare($conn, $sql)){
             //bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -143,13 +116,11 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $id_pembeli = $row["id_pembeli"];
-                $nama = $row["nama"];
-                $alamat = $row["alamat"];
-                $HP = $HP["HP"];    
-                
-            
-                
+                $id = $row["id"];
+                $name = $row["name"];
+                $merk = $row["merk"];
+                $price = $row ["price"];
+                $release_date = $row ["release_date"];
                 
                 } else{
                 // URL doesn't contain valid id. Redirect to error page
@@ -166,7 +137,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                 mysqli_stmt_close ($stmt) ;
                 
                 // Close connection
-                mysqli_close($link);
+                mysqli_close($conn);
             }	else{
                 // URL doesn't contain id parameter.	Redirect to error page
                 header("location: error.php");
@@ -198,51 +169,37 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                     </div>
                     <p>Silahkan isi form di bawah ini kemudian submit untuk menambahkan data pelanggan ke dalam database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id_pembeli_err)) ? 'has-error' : ''; ?>">
-                            <label>ID Pembeli</label>
-                            <input type="text" name="id_pembeli" class="form-control" value="<?php echo $id_pembeli; ?>">                          
-                            <span class="help-block"><?php echo $id_pembeli_err;?></span>
+                        <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
+                            <label>ID Barang</label>
+                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">                          
+                            <span class="help-block"><?php echo $id_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($nama_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Nama</label>
-                            <input type="text"name="nama" class="form-control"><?php echo $nama; ?></input>                            
-                            <span class="help-block"><?php echo $nama_err;?></span>
+                            <input type="text"name="nama" class="form-control" value="<?php echo $name; ?>">                            
+                            <span class="help-block"><?php echo $name_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($alamat_err)) ? 'has-error' : ''; ?>">
-                            <label>Alamat</label>
-                            <input type="text" name="alamat" class="form-control" value="<?php echo $alamat; ?>">
-                            <span class="help-block"><?php echo $alamat_err;?></span>
+                        <div class="form-group <?php echo (!empty($merk_err)) ? 'has-error' : ''; ?>">
+                            <label>Merk</label>
+                            <input type="text" name="Merk" class="form-control" value="<?php echo $merk; ?>">
+                            <span class="help-block"><?php echo $merk_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($HP_err)) ? 'has-error' : ''; ?>">
-                            <label>No. Handphone</label>
-                            <input type="text" name="HP" class="form-control" value="<?php echo $HP; ?>">
-                            <span class="help-block"><?php echo $HP_err;?></span>
+                        <div class="form-group <?php echo (!empty($product_type_err)) ? 'has-error' : ''; ?>">
+                            <label>Price</label>
+                            <input type="text" name="Product_type" class="form-control" value="<?php echo $product_type; ?>">
+                            <span class="help-block"><?php echo $product_type_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($Tgl_Transaksi_err)) ? 'has-error' : ''; ?>">
-                            <label>Tanggal Transaksi</label>
-                            <input type="date" name="Tgl_Transaksi" class="form-control" value="<?php echo $Tgl_Transaksi; ?>">
-                            <span class="help-block"><?php echo $Tgl_Transaksi_err;?></span>
+                        <div class="form-group <?php echo (!empty($release_date_err)) ? 'has-error' : ''; ?>">
+                            <label>Product Type</label>
+                            <input type="text" name="Jenis_Barang" class="form-control" value="<?php echo $release_date; ?>">                         
+                            <span class="help-block"><?php echo $release_date_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($Jenis_Barang_err)) ? 'has-error' : ''; ?>">
-                            <label>Jenis Barang</label>
-                            <input type="text" name="Jenis_Barang" class="form-control" value="<?php echo $Jenis_Barang; ?>">                         
-                            <span class="help-block"><?php echo $Jenis_Barang_err;?></span>
+                        <div class="form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
+                            <label>Tanggal rilis</label>
+                            <input type="date" name="Tgl_Transaksi" class="form-control" value="<?php echo $price; ?>">
+                            <span class="help-block"><?php echo $price_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($Nama_Barang_err)) ? 'has-error' : ''; ?>">
-                            <label>Nama Barang</label>
-                            <input type="text" name="Nama_Barang" class="form-control" value="<?php echo $Nama_Barang; ?>">
-                            <span class="help-block"><?php echo $Nama_Barang_err;?></span>
-                        </div>
-                        <div class="form-group <?php echo (!empty($Jumlah_err)) ? 'has-error' : ''; ?>">
-                            <label>Jumlah</label>
-                            <input type="text" name="Jumlah" class="form-control" value="<?php echo $Jumlah; ?>">
-                            <span class="help-block"><?php echo $Jumlah_err;?></span>
-                        </div>
-                        <div class="form-group <?php echo (!empty($Harga_err)) ? 'has-error' : ''; ?>">
-                            <label>Harga</label>
-                            <input type="text" name="Harga" class="form-control" value="<?php echo $Harga; ?>">
-                            <span class="help-block"><?php echo $Harga_err;?></span>
-                        </div>
+                        
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
