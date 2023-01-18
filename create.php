@@ -14,18 +14,14 @@
             <div style="color:red;">
                 <?php
                 if(isset($_POST['submit'])){              
-                    $id_pembeli = $_POST['id_pembeli'];
-                    $nama = $_POST['nama'];
-                    $HP = $_POST['HP'];
-                    $jenis_barang = $_POST['jenis_barang'];
-                    $nama_barang = $_POST['nama_barang'];
-                    $jumlah = $_POST['jumlah'];
-                    $harga = $_POST['harga'];
-                    $tgl_transaksi = $_POST['tgl_transaksi'];
-                    $alamat = $_POST['alamat'];
+                    $name = $_POST['name'];
+                    $merk = $_POST['merk'];
+                    $product_type = $_POST['product_type'];
+                    $price = $_POST['price'];
+                    $release_date = $_POST['release_date'];
                     
-                    $script = "INSERT INTO products SET id_pembeli='$id_pembeli',nama='$nama',HP='$HP',jenis_barang='$jenis_barang',nama_barang='$nama_barang',
-                    jumlah='$jumlah',harga='$harga',tgl_transaksi='$tgl_transaksi',alamat='$alamat'";
+                    $script = "INSERT INTO products SET 
+                    name='$name',merk='$merk',product_type='$product_type',price='$price',release_date='$release_date',";
                     $query = mysqli_query($conn,$script);
                     if($query){
                         header("location:read.php");
@@ -38,43 +34,34 @@
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group mt-3">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" name="nama">
+                    <label>Nama Product</label>
+                    <input type="text" class="form-control" name="name">
                 </div>
                 <div class="form-group mt-3">
-                    <label>hp</label>
-                    <input type="text" class="form-control" name="HP">
+                    <label>Merk Product</label>
+                    <input type="text" class="form-control" name="merk">
                 </div>
                 <div class="form-group mt-3">
-                    <label>jenis</label>
-                    <select name="jenis_barang" class="form-control">
+                    <label>Jenis Product</label>
+                    <select name="product_type" class="form-control">
                         <option>Pilih jenis</option>
-                        <option value="laptop">laptop</option>
-                        <option value="handphone">handphone</option>
-                        <option value="monitor">monitor</option>
-                        <option value="keyboard">keyboard</option>
-                        <option value="mouse">mouse</option>
+                        <option value="laptop">Processor</option>
+                        <option value="handphone">Memory</option>
+                        <option value="monitor">Storage</option>
+                        <option value="keyboard">Power Supply</option>
+                        <option value="mouse">Graphic Card</option>
+                        <option value="mouse">Motherboard</option>
+                        <option value="mouse">Fan</option>
+                        <option value="mouse">CPU Cooler</option>
                     </select>
                 </div>
                 <div class="form-group mt-3">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" name="nama_barang">
-                </div>
-                <div class="form-group mt-3">
-                    <label>jumlah</label>
-                    <input type="number" class="form-control" name="jumlah">
-                </div>
-                <div class="form-group mt-3">
                     <label>Harga</label>
-                    <input type="number" class="form-control" name="harga">
+                    <input type="number" class="form-control" name="price ">
                 </div>
                 <div class="form-group mt-3">
-                    <label>tanggal</label>
-                    <input type="text" class="form-control" name="tgl_transaksi">
-                </div>
-                <div class="form-group mt-3">
-                    <label>alamat</label>
-                    <input type="text" class="form-control" name="alamat">
+                    <label>Tanggal Release</label>
+                    <input type="date" class="form-control" name="tgl_transaksi">
                 </div>
                 <div class="mt-5">
                     <input type="submit" class="btn btn-primary" name="submit" value="Upload"> 

@@ -1,11 +1,4 @@
-<?php
-    session_start();
 
-    if(!isset($_SESSION['username'])){
-        $_SESSION['msg']='anda harus login untuk mengakses halaman ini';
-        header('Location: login.php');
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,11 +48,13 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name </th>
+                    <th>Nama </th>
                     <th>Merk</th>
-                    <th>product Type</th>
-                    <th>Price</th>
-                    <th>release Date </th>
+                    <th>Jenis</th>
+                    <th>Harga</th>
+                    <th>Tanggal Release</th>
+                    <th>Edit Barang</th>
+                    <th>Hapus Barang</th>
                 </tr>
             </thead>
             <tbody  >
@@ -79,17 +74,14 @@
 
                 while ($row = mysqli_fetch_array($SqlQuery)) {
                     echo "<tr>";
-                    echo "<td>" . $row['id_pembeli'] . "</td>";
-                    echo "<td>" . $row['nama'] . "</td>";
-                    echo "<td>" . $row['alamat'] . "</td>";
-                    echo "<td>" . $row['HP'] . "</td>";
-                    echo "<td>" . $row['tgl_transaksi'] . "</td>";
-                    echo "<td>" . $row['jenis_barang'] . "</td>";
-                    echo "<td>" . $row['nama_barang'] . "</td>";
-                    echo "<td>" . $row['jumlah'] . "</td>";
-                    echo "<td>" . $row['harga'] . "</td>";
-                    echo "<td><a href='update.php?id=". $row['id_pembeli'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
-                    echo "<td><a href='delete.php?id=". $row['id_pembeli'] ."' class='btn btn-danger pull-right'>Hapus</a></td>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "<td>" . $row['merk'] . "</td>";
+                    echo "<td>" . $row['product_type'] . "</td>";
+                    echo "<td>" . $row['price'] . "</td>";
+                    echo "<td>" . $row['release_date'] . "</td>";
+                    echo "<td><a href='update.php?id=". $row['id'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
+                    echo "<td><a href='delete.php?id=". $row['id'] ."' class='btn btn-danger pull-right'>Hapus</a></td>";
                     echo "</tr>";
                     $no++;
                 }
