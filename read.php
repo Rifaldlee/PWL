@@ -32,12 +32,12 @@
                                     <?php
                                     $kolom = (isset($_GET['Kolom'])) ? $_GET['Kolom'] : "";
                                     ?>
-                                    <option value="nama" <?php if ($kolom == "nama") {
+                                    <option value="name" <?php if ($kolom == "name") {
                                                                 echo "selected";
                                                             } ?>>Nama</option>
-                                    <option value="id_pembeli" <?php if ($kolom == "Id_customer") {
+                                    <option value="id" <?php if ($kolom == "id") {
                                                                 echo "selected";
-                                                            } ?>>Id Pembeli</option>
+                                                            } ?>>Id Barang</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -88,6 +88,10 @@
                     echo "<td>" . $row['release_date'] . "</td>";
                     echo "<td><a href='update.php?id=". $row['id'] ."' class='btn btn-warning pull-right'>Edit</a></td>";
                     echo "<td><a href='delete.php?id=". $row['id'] ."' class='btn btn-danger pull-right'>Hapus</a></td>";
+                    echo "
+                    <!-- Button trigger modal -->
+                    <button type='button' class='btn btn-danger deleteButton pad m-1'><span class='material-icons align-middle'>delete</span></button>";
+        echo "</td>";
                     echo "</tr>";
                     $no++;
                 }
@@ -99,6 +103,53 @@
                 ?>
             </tbody>
         </table>
+        <div class='modal fade' style="top:58px !important;" id='deleteModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLabel'>Konfirmasi</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+
+
+                    <form action='hapus.php' method='POST'>
+
+                        <div class='modal-body text-start'>
+                            <input type='hidden' name='delete_id' id='delete_id'>
+                            <p>Yakin ingin menghapus data ini?</p>
+                        </div>
+
+                        <div class='modal-footer'>
+                            <button type='submit' name='deletedata' class='btn btn-primary'>Hapus</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <script>
+        $(document).ready(function() {
+            $('.deleteButton').on('click', function() {
+                $('#deleteModal').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#delete_id').val(data[0]);
+            });
+        });
+    </script>
+     <script>
+        function clicking() {
+            window.location.href = './index.php';
+        }
+    </script>
         <div align="left">
             <ul class="pagination">
                 <?php
