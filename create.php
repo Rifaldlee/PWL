@@ -38,10 +38,6 @@
             </div>
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group mt-3">
-                    <label>id</label>
-                    <input type="number" class="form-control" name="id_pembeli">
-                </div>
-                <div class="form-group mt-3">
                     <label>Nama</label>
                     <input type="text" class="form-control" name="nama">
                 </div>
