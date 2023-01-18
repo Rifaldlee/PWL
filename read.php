@@ -57,6 +57,7 @@
                     <th>ID</th>
                     <th>Nama </th>
                     <th>Merk</th>
+                    <th>Tipe produk</th>
                     <th>price</th>
                     <th>Tanggal Release</th>
                     <th>Edit</th>
