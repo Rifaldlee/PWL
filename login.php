@@ -8,7 +8,7 @@
     $validate = '';
 
     // mengecek apakah session username tersedia atau tidak jika tersedia maka akan redirect ke halaman index
-    if(isset($_SESSION['username'])) header('Location: HomePage.html');
+    if(isset($_SESSION['username'])) header('Location: read.php');
 
     // mengecek apakah form disubmit atau tidak
     if(isset($_POST['submit'])){
@@ -33,7 +33,7 @@
                     if(password_verify($password, $hash)){
                         $_SESSION['username'] = $username;
 
-                        header('Location: HomePage.html');
+                        header('Location: read.php');
                     }
                 // jika gagal maka akan menampilkan pesan error    
                 }else{
@@ -45,7 +45,7 @@
         }
 
         if($_SESSION["code"] == $_POST["kodecaptcha"]) {
-            header('Location: HomePage.html');
+            header('Location: read.php');
         }else{
             $error = 'Login user Gagal';
         }
