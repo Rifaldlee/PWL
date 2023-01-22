@@ -167,15 +167,10 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                         <h2>Tambah Data Pelanggan</h2>
                     </div>
                     <p>Silahkan isi form di bawah ini kemudian submit untuk menambahkan data pelanggan ke dalam database.</p>
-<<<<<<< HEAD
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
-                            <label>ID Barang</label>
-=======
+
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
-                            <label>Id Barang</label>
->>>>>>> f135fe20f6e1fba9bb29c73a2d6082234b7e16f9
+                            <label>ID Barang</label>
                             <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">                          
                             <span class="help-block"><?php echo $id_err;?></span>
                         </div>
@@ -190,13 +185,10 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                             <span class="help-block"><?php echo $merk_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($product_type_err)) ? 'has-error' : ''; ?>">
-<<<<<<< HEAD
+
                             <label>Product Type</label>
                             <select type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
-=======
-                            <label>product type</label>
-                            <input type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
->>>>>>> f135fe20f6e1fba9bb29c73a2d6082234b7e16f9
+
                             <span class="help-block"><?php echo $product_type_err;?></span>
                             <option>Pilih jenis</option>
                                 <option value="laptop">Processor</option>
