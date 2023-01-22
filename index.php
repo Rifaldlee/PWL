@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MEMBUAT GRAFIK DARI DATABASE MYSQL DENGAN PHP DAN CHART.JS </title>
+	<title>CHART ICE HARDWARE</title>
 	<script type="text/javascript" src="Chart.js"></script>
 	<link rel="stylesheet" href="CSS/Navbar.css">
 </head>
