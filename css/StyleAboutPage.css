@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    text-align: center;
+    width: 300px;
+}
+p {
+    font-family: 'Kdam Thmor Pro';
+    padding: 5px;
+    color: black;
+}
+
+[class*="col-"] {
+    float: center;
+}
+
+body {
+    font-family: 'Kdam Thmor Pro';
+    margin: auto;
+    width: 100%;
+    background: white;
+}
+
+.menu {
+    float: center;
+    margin: auto;
+    padding: 2px;
+    background-color: aliceblue;
+    color: black;
+}
+
+.content {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.title {
+    text-align: center;
+    background-color: aqua;
+    border: 10px;
+    color: black;
+    margin-bottom: 10px;
+}
+.heading{
+    text-align: left;
+    margin: 30px 0 0 0;
+    color: #130f40;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+    border: 1px;
+}
+.description{
+    text-align: justify;
+    padding: 0 10px;
+    margin: 0;
+    color: #0c092d;
+}
+.container{
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2), -1px -1px 7px rgba(0, 0, 0, 0.2);
+    margin: 15px 0 0 0;
+}
+.slides{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #130f40;
+    text-align: center;
+    position: static;
+    margin-top: 50px;
+ }
+.fc{
+    padding: 5px 0px;
+    margin: 0px;
+    color: white;
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #130f40;
+    position: fixed;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #0c092d;
+}
+
+.active {
+    background-color: #eaff00;
+    color: black;
+}
+
+button {
+    float: center;
+    position: absolute top 200px;
+}
+
+.about-title {
+    border: 4px;
+}
