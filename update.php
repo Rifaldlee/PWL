@@ -20,23 +20,22 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
         $id = $input_id;
     }
 
-    $input_name = trim($_POST["name"]);
+    $input_name = ($_POST["name"]);
     if(empty($input_name)){
         $name_err = "Silahkan input nama";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+/")))){
-        $name_err = "Tolong input nama yang benar";
+   
     } else{
         $name = $input_name;
     }
 
-    $input_merk = trim($_POST["merk"]);
+    $input_merk = ($_POST["merk"]);
     if(empty($input_merk)){
         $merk_err = "Silahkan input merk";
     } else{
         $merk = $input_merk;
     }
 
-    $input_product_type = trim($_POST["product_type"]);
+    $input_product_type = ($_POST["product_type"]);
     if(empty($input_product_type)){
         $product_type_err = "Silahkan input Tipe Produk";
     } else{
@@ -65,15 +64,15 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
         
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "iiiiii",  $param_name, $param_merk, $param_product_type, $param_price, $param_release_date, $param_id,);
+            mysqli_stmt_bind_param($stmt, "sssssi",  $param_name, $param_merk, $param_product_type, $param_price, $param_release_date, $param_id,);
 
            // Set paramaters
-           $param_id = $id;
            $param_name = $name;             
            $param_merk = $merk; 
-           $param_product_type = $product_type; 
+           $param_product_type = $product_type;  
            $param_price = $price; 
-           $param_release_date = $release_date; 
+           $param_release_date = $release_date;
+           $param_id = $id;  
            
             //attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -104,7 +103,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
             mysqli_stmt_bind_param($stmt, "i", $param_id);
 
             //set parameters
-            $param_id = $id;
+           $param_id = $id;
 
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
@@ -115,10 +114,10 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $id = $row["id"];
-                $name = $row["name"];
-                $merk = $row["merk"];
-                $product_type = $row["product_type"];
+                $id = $row ["id"];
+                $name = $row ["name"];
+                $merk = $row ["merk"];
+                $product_type = $row ["product_type"];
                 $price = $row ["price"];
                 $release_date = $row ["release_date"];
                 
@@ -168,14 +167,20 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                         <h2>Tambah Data Pelanggan</h2>
                     </div>
                     <p>Silahkan isi form di bawah ini kemudian submit untuk menambahkan data pelanggan ke dalam database.</p>
+<<<<<<< HEAD
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
                             <label>ID Barang</label>
+=======
+                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                        <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Barang</label>
+>>>>>>> f135fe20f6e1fba9bb29c73a2d6082234b7e16f9
                             <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">                          
                             <span class="help-block"><?php echo $id_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                            <label>Nama</label>
+                            <label>Name</label>
                             <input type="text"name="name" class="form-control" value="<?php echo $name; ?>">                            
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
@@ -185,8 +190,13 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                             <span class="help-block"><?php echo $merk_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($product_type_err)) ? 'has-error' : ''; ?>">
+<<<<<<< HEAD
                             <label>Product Type</label>
                             <select type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
+=======
+                            <label>product type</label>
+                            <input type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
+>>>>>>> f135fe20f6e1fba9bb29c73a2d6082234b7e16f9
                             <span class="help-block"><?php echo $product_type_err;?></span>
                             <option>Pilih jenis</option>
                                 <option value="laptop">Processor</option>
