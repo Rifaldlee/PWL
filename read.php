@@ -20,7 +20,7 @@
 <body>
 <div class="container">
         <div align="center">
-            <h3><b>Uts pemograman web lanjut</b></h3>
+            <h3><b>Ice Hardware</b></h3>
         <div class="row" >
             <div class="col-md-12">
                 <div class="panel panel-default">
