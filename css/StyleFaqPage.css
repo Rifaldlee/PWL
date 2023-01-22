@@ -1,0 +1,104 @@
+body {
+    font-family: 'Kdam Thmor Pro';
+    max-width: 100%;
+}
+footer{
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background-color: #130f40;
+    text-align: center;
+    position: static;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #130f40;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+li a:hover:not(.active-page) {
+    background-color: #0c092d;
+}
+.active-page {
+    background-color: #eaff00;
+    color:black;
+}
+.faq-heading {
+    border-bottom: #777;
+    padding: 20px 60px;
+    margin: 0;
+    margin-top: 50px;
+    color: #130f40;
+}
+.faq-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.hr-line {
+    width: 60%;
+    margin: auto;
+}
+/* Style button untuk buka tutup faq body */
+.faq-page {
+    /* background-color */
+    color:#0c092d;
+    cursor: pointer;
+    padding: 30px 20px;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+}
+.faq-body {
+    margin: auto;
+    /* text-align: center; */
+    width: 50%;
+    padding: auto;
+}
+/* untuk menampilkan warna jika ada yang mau di klik */
+.active,
+.faq-page:hover {
+    background-color: whitesmoke;
+}
+.faq-body {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+.faq-page:after {
+    content: '\02795';
+    /* untuk tombol "plus" (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796";
+    /* Untuk tombol "minus"  (-) */
+}
+.fc{
+    padding: 5px 0px;
+    margin: 0px;
+    color: white;
+    text-decoration: none;
+}
