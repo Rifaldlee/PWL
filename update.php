@@ -191,14 +191,14 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
 
                             <span class="help-block"><?php echo $product_type_err;?></span>
                             <option>Pilih jenis</option>
-                                <option value="laptop">Processor</option>
-                                <option value="handphone">Memory</option>
-                                <option value="monitor">Storage</option>
-                                <option value="keyboard">Power Supply</option>
-                                <option value="mouse">Graphic Card</option>
-                                <option value="mouse">Motherboard</option>
-                                <option value="mouse">Fan</option>
-                                <option value="mouse">CPU Cooler</option>
+                                <option value="Processor">Processor</option>
+                                <option value="Memory">Memory</option>
+                                <option value="Storage">Storage</option>
+                                <option value="Power Supply">Power Supply</option>
+                                <option value="Graphic Card">Graphic Card</option>
+                                <option value="Motherboard">Motherboard</option>
+                                <option value="Fan">Fan</option>
+                                <option value="CPU Cooler">CPU Cooler</option>
                                 </select>
                         </div>
                         <div class="form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
