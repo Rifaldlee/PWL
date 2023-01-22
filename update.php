@@ -169,7 +169,7 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                     </div>
                     <p>Silahkan isi form di bawah ini kemudian submit untuk menambahkan data pelanggan ke dalam database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
+                    <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
                             <label>ID Barang</label>
                             <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">                          
                             <span class="help-block"><?php echo $id_err;?></span>
@@ -186,8 +186,18 @@ if(isset($_POST["id"]) && !empty($_POST ["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($product_type_err)) ? 'has-error' : ''; ?>">
                             <label>Product Type</label>
-                            <input type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
+                            <select type="text" name="product_type" class="form-control" value="<?php echo $product_type; ?>">
                             <span class="help-block"><?php echo $product_type_err;?></span>
+                            <option>Pilih jenis</option>
+                                <option value="laptop">Processor</option>
+                                <option value="handphone">Memory</option>
+                                <option value="monitor">Storage</option>
+                                <option value="keyboard">Power Supply</option>
+                                <option value="mouse">Graphic Card</option>
+                                <option value="mouse">Motherboard</option>
+                                <option value="mouse">Fan</option>
+                                <option value="mouse">CPU Cooler</option>
+                                </select>
                         </div>
                         <div class="form-group <?php echo (!empty($price_err)) ? 'has-error' : ''; ?>">
                             <label>Price</label>
