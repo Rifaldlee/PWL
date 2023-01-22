@@ -3,8 +3,18 @@
 <head>
 	<title>MEMBUAT GRAFIK DARI DATABASE MYSQL DENGAN PHP DAN CHART.JS </title>
 	<script type="text/javascript" src="Chart.js"></script>
+	<link rel="stylesheet" href="CSS/Navbar.css">
 </head>
+
 <body>
+<ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="ProductPage.html">Product</a></li>
+                <li><a class="active-page" href="FaqPage.html">FAQ</a></li>
+                <li><a href="AboutPage.html">About</a></li>
+                <li><a href="index.php">Chart</a></li>
+                 <li><a href="read.php">Admin</a></li>
+            </ul>
 	<style type="text/css">
 	body{
 		font-family: roboto;

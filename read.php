@@ -16,8 +16,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="CSS/navbar.css">
 </head>
 <body>
+<ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="ProductPage.html">Product</a></li>
+                <li><a class="active-page" href="FaqPage.html">FAQ</a></li>
+                <li><a href="AboutPage.html">About</a></li>
+                <li><a href="index.php">Chart</a></li>
+                 <li><a href="read.php">Admin</a></li>
+            </ul>
 <div class="container">
         <div align="center">
             <h3><b>Ice Hardware</b></h3>
